@@ -2,18 +2,15 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      docker: 18
+      nodejs: 10
+  pre_build:
     commands:
-      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
-      - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
-    pre_build:
-      commands:
-        - echo Change directory...
-        - cd static-site
-        - echo List directory files...
-        - ls
-        - echo Installing source NPM dependencies...
-        - npm install
+      - echo Change directory...
+      - cd workshop-client-ui
+      - echo List directory files...
+      - ls
+      - echo Installing source NPM dependencies...
+      - npm install
   build:
     commands:
       - echo List active directory...
