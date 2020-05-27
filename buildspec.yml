@@ -11,6 +11,8 @@ phases:
       - npm install
   build:
     commands:
+      - aws --version
+      - aws sts get-caller-identity
       - echo List active directory...
       - ls
       - echo Build started on `date`
